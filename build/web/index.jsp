@@ -42,7 +42,7 @@
             </div>             
         </div-->
             
-            
+        <a class="btn btn-warning" href="RegLibro.jsp" style="float: right;">Atrás</a>
             
         <div class="d-flex justify-content-around mx-4 my-5">
                               
