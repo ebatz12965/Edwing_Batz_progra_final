@@ -42,7 +42,7 @@
             </div>             
         </div-->
             
-        <a class="btn btn-warning" href="RegLibro.jsp" style="float: right;">Atrás</a>
+        <a class="btn btn-warning" href="registrar.jsp" style="float: right;">Atrás</a>
             
         <div class="d-flex justify-content-around mx-4 my-5">
                               
@@ -54,7 +54,7 @@
                
                     
          
-            <form action="NewServlet" method="POST">
+           <form action="NewServlet" method="POST">
                 
                 <div class="mt-3 mb-5 mx-4">
                         <img src="img/icono.png" class="rounded mx-auto d-block" width="100" alt="...">
@@ -72,8 +72,9 @@
               <input type="password" class="form-control" name="pass" id="exampleInputPassword1" placeholder="Ingrese contraseña">
             </div>
            <br>
-                <input type="submit" class="btn btn-primary"></button>
+                <button type="submit" class="btn btn-primary"></button>
+                </div>
           </form>
-        </div>
+        
     </body>
 </html>

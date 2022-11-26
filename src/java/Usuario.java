@@ -26,7 +26,7 @@ public class Usuario {
     }
     
     public String validarUsuario(String user, String pass){
-        String sql = "SELECT * FROM usuario WHERE nombre_usuario = '" + user + "' AND contrasenia = '"+pass+"'";
+        String sql = "SELECT * FROM usuario WHERE usuario = '" + user + "' AND contrasenia = '"+pass+"'";
         try{
             this.conexion = this.conectorBD.conectar();
             this.statement = conexion.prepareStatement(sql);
@@ -34,7 +34,7 @@ public class Usuario {
             if(result != null){
                  String usuarioEncontrado="";
                 while (result.next()){
-                    usuarioEncontrado= result.getString("nombre_usuario");
+                    usuarioEncontrado= result.getString("usuario");
                 }
                 return usuarioEncontrado;
             }

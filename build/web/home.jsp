@@ -43,12 +43,12 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav">
                 <li class="nav-item ">
-                      <a class="nav-link" href="Libro.jsp"  aria-expanded="false">
+                      <a class="nav-link" href="listar.jsp"  aria-expanded="false">
                           Consultar
                       </a>
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link" href="RegLibro.jsp"  aria-expanded="false">
+                      <a class="nav-link" href="registrar.jsp"  aria-expanded="false">
                           Registrar
                       </a>
                   </li>

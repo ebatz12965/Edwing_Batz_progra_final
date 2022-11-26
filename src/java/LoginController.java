@@ -16,10 +16,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Edwing
  */
-@WebServlet(urlPatterns = {"/NewServlet"})
-public class NewServlet extends HttpServlet {
-    Usuario usuario;
-    
+@WebServlet(urlPatterns = {"/LoginController"})
+public class LoginController extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,25 +32,14 @@ public class NewServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            usuario = new Usuario();
-            String user = request.getParameter("user");
-            String pass = request.getParameter("pass");
-            if(user.equals("")||pass.equals("")){
-                request.setAttribute("success", 0);
-                request.setAttribute("mensaje", "Ingrese todos los campos");
+           if(request.getSession().getAttribute("user")==null){
+               //response.sendRedirect(request.getContextPath()+"/index.jsp");
+               request.setAttribute("success", 0);
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
-            }
-            
-            String usuarioConsultado= usuario.validarUsuario(request.getParameter("user"), request.getParameter("pass"));
-            if(usuarioConsultado.equals(request.getParameter("user"))){
-               request.getSession().setAttribute("user", request.getParameter("user"));
-                request.getSession().setAttribute("pass", request.getParameter("pass"));
-                response.sendRedirect(request.getContextPath()+"/LoginController");              
-            }else{
-                request.setAttribute("success", 0);
-                request.setAttribute("mensaje", "Usuario y/o contraseña incorrecta");
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
-            }  
+           }else{
+               request.setAttribute("UsuarioLogueado", request.getSession().getAttribute("user"));
+               request.getRequestDispatcher("home.jsp").forward(request, response);
+           }
         }
     }
 

@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+import Clases.Libro;
+import Clases.LibroController;
+import Clases.ConexionBaseDeDatos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,8 +19,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Edwing
  */
-@WebServlet(urlPatterns = {"/Controller"})
-public class Controller extends HttpServlet {
+@WebServlet(urlPatterns = {"/NewServlet1"})
+public class NewServlet1 extends HttpServlet {
+    
+    Libro libro;
+    LibroController registroLibro;
+    StringBuffer objetoRespuesta = new StringBuffer();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,13 +39,21 @@ public class Controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           if(request.getSession().getAttribute("user")==null){
-               //response.sendRedirect(request.getContextPath()+"/index.jsp");
-               request.setAttribute("success", 0);
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
-           }else{
-               request.setAttribute("UsuarioLogueado", request.getSession().getAttribute("user"));
-               request.getRequestDispatcher("home.jsp").forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+             
+            registroLibro=new LibroController();
+            String control = request.getParameter("control");
+           
+            if(control.toUpperCase().equals("GUARDAR")){
+               
+               libro=new Libro(
+                Integer.parseInt(request.getParameter("codigo")),
+                request.getParameter("nombre"),
+                 request.getParameter("autor"),
+                request.getParameter("fecha"),               
+             Integer.parseInt(request.getParameter("pasta")) );     
+                              
+                registroLibro.guardarLibro2(libro);//almacenarlo en BD                 
            }
         }
     }
